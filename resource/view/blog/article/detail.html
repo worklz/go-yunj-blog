@@ -1,0 +1,110 @@
+{% extends "../public/layout.html" %}
+
+{% block content %}
+<header class="article-header">
+    <h1 class="article-title"><a href="#" title="{{ data.article.Title }}">{{ data.article.Title }}</a></h1>
+    <div class="article-meta">
+        <span class="item article-meta-time" title="发布时间：{{ data.article.DisplayCreateTime}}">
+            <time class="time"><i class="yunj-icon yunj-icon-time"></i> {{ data.article.DisplayCreateTime}}</time></span>
+        <span class="item article-meta-source" title="作者：worklz">
+            <i class="yunj-icon yunj-icon-pen"></i> worklz</span>
+        <span class="item article-meta-views" title="浏览量：{{ data.article.ViewCount}}">
+            <i class="yunj-icon yunj-icon-eye"></i> {{ data.article.ViewCount}}</span>
+        {% if data.article.RelatedCategorys %}
+        <br><br>
+        {% for cate in data.article.RelatedCategorys %}
+        <span class="item article-meta-category" title="分类：{{ cate.Name }}">
+            <a href="/category{% if cate.Id>0 %}/{{ cate.Id }}{% endif %}" title="{{ cate.Name }}"><i
+                    class="yunj-icon yunj-icon-category"></i> {{ cate.Name }}</a></span>
+        {% endfor %}
+        {% endif %}
+    </div>
+</header>
+<article class="article-content">
+    {% for item in data.detailTopAd %}
+    <p><a href="{{ item.Link }}" target="_blank" title="{{ item.Desc }}"><img class="lazy" data-original="{{ item.Cover }}"
+                                                                        alt="{{ item.Desc }}"/></a></p>
+    {% endfor %}
+    <div id="article_content" style="padding: 0">
+        <textarea style="display:none;" name="markdown_doc">{{ data.article.Content }}</textarea>
+    </div>
+</article>
+{% if data.article.Tags %}
+<div class="article-tags">
+    标签：
+    {% for item in data.article.Tags %}
+    <a href="/search?keywords={{ item }}" rel="tag">{{ item }}</a>
+    {% endfor %}
+</div>
+{% endif %}
+{% if data.article.RecommendArticles %}
+<div class="relates">
+    <div class="title">
+        <h3>相关推荐</h3>
+    </div>
+    <ul>
+        {% for item in data.article.RecommendArticles %}
+        <li><a href="/article/{{ item.Id }}">{{ item.Title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="title" id="comment">
+    <h3>评论</h3>
+</div>
+<div id="respond">
+    <div id="comment-form">
+        <div class="comment">
+            <input name="" class="form-control" size="22" placeholder="您的昵称（必填）" maxlength="15" autocomplete="off"
+                   tabindex="1" type="text">
+            <input name="" class="form-control" size="22" placeholder="您的网址或邮箱（非必填）" maxlength="58" autocomplete="off"
+                   tabindex="2" type="text">
+            <div class="comment-box">
+                <textarea placeholder="您的评论或留言（必填）" name="comment-textarea" id="comment-textarea" cols="100%" rows="3" tabindex="3"></textarea>
+                <div class="comment-ctrl">
+                    <button type="submit" name="comment-submit" id="comment-submit" tabindex="4">评论</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="postcomments">
+    <ol id="comment_list" class="commentlist">
+        <li class="comment-content">
+            <div class="comment-main">
+                <p>
+                    <a class="address" href="#" rel="nofollow" target="_blank">小红</a>
+                    <span class="time">(2016/10/28 11:41)</span><br>不错的博客网站，看着相当舒服
+                </p>
+            </div>
+        </li>
+        <li class="comment-content">
+            <div class="comment-main">
+                <p>
+                    <a class="address" href="#" rel="nofollow" target="_blank">小汤</a>
+                    <span class="time">(2016/10/14 21:02)</span><br>博客做得好漂亮哦！
+                </p>
+            </div>
+        </li>
+    </ol>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    layui.use(["jquery", "yunj"], function () {
+        let win = window;
+        let doc = document;
+        let $ = layui.jquery;
+
+
+        $(doc).ready(function () {
+            let id = "article_content";
+            let doc = $("#article_content textarea[name=markdown_doc]").val();
+            yunj.markdownToHtml(id, doc);
+        });
+
+    });
+</script>
+{% endblock %}

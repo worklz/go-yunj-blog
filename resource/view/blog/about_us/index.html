@@ -1,0 +1,35 @@
+{% extends "../public/layout.html" %}
+
+{% block head %}
+<style type="text/css">
+    .panel {
+        min-height: 400px;
+        cursor: default;
+    }
+
+    .panel .text-center {
+        margin: 0 auto;
+        padding-bottom: 20px;
+        text-align: center;
+        border-radius: 10px;
+        max-width: 900px;
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    }
+
+    .panel h2 {
+        padding-top: 20px;
+        font-size: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+    <div class="text-center">
+        <h2><stong> QQ：{{ data.site.author.qq}}</stong></h2>
+        <h2><stong>Email：{{ data.site.author.email}}</stong></h2>
+    </div>
+</div>
+{% endblock %}

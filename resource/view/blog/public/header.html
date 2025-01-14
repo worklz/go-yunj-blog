@@ -1,0 +1,59 @@
+<!--<div class="page-header">-->
+<!--    <div class="topbar">-->
+<!--        <div class="topbar-content">-->
+<!--            <div class="left">Email：{:config("blog.author.email")}</div>-->
+<!--            <div class="right">-->
+<!--                <span class="item"><a href="#">标签云</a></span>-->
+<!--                <span class="item"><a href="#">读者墙</a></span>-->
+<!--                <span class="item"><a href="#" title="RSS订阅"><i class="yunj-icon yunj-icon-sub"></i> RSS订阅</a></span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="menu"></div>-->
+<!--</div>-->
+
+<header class="header">
+    <nav class="navbar navbar-default" id="navbar">
+        <div class="header-topbar hidden-xs link-border" style="">
+            <div class="header-topbar-container">
+                <ul class="site-nav topmenu">
+                    <li><a href="#">标签云</a></li>
+                    <li><a href="#" rel="nofollow">读者墙</a></li>
+                    <li><a href="#" title="RSS订阅"><i class="yunj-icon yunj-icon-sub"></i> RSS订阅</a></li>
+                </ul>
+                Email：{{ data.site.author.email }}
+            </div>
+        </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#header-navbar" aria-expanded="false">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1 class="logo hvr-bounce-in">
+                    <a href="/" title="{{ data.site.title }}">
+                        <img class="lazy" data-original="/static/blog/imgs/textlogo.png" alt="{{ data.site.title }}"
+                             style="height: 60px;"
+                             src="/static/blog/imgs/textlogo.png">
+                    </a>
+                </h1>
+            </div>
+            <div class="collapse navbar-collapse" id="header-navbar">
+                <div class="keywords-box">
+                    <input type="text" name="keywords" placeholder="请输入关键字" class="layui-input">
+                    <button type="button" class="layui-btn layui-btn-normal btn-search">搜索</button>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/" title="首页">首页</a></li>
+                    <li><a href="/category" title="随笔">随笔</a></li>
+                    {{ data.menuLayout | safe }}
+                    <li><a href="/about-us" title="关于我们">关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="replace-header" style="display:none;"></div>

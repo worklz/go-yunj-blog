@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="/static/libs/editor.md/css/editormd.preview.css"/>
+<div class="article-container">
+    {% for article in data.articlePageData.items %}
+    <article class="excerpt">
+        <a class="focus" href="/article/{{ article.Id }}" title="{{ article.Title }}">
+            <img class="thumb" data-original="{{ article.Cover }}" src="{{ article.Cover }}" alt="{{ article.Title }}" style="display: inline;"></a>
+        <header>
+            <a class="cat" title="yunj">yunj<i></i></a>
+            <h2><a href="/article/{{ article.Id }}" title="{{ article.Title }}">{{ article.Title | safe }}</a></h2>
+        </header>
+        <div class="meta">
+            <time class="time"><i class="yunj-icon yunj-icon-time"></i> {{ article.DisplayCreateTime }}</time>
+
+            <span class="views"><i class="yunj-icon yunj-icon-eye"></i> {{ article.ViewCount }}</span>
+        </div>
+        <div class="note">{{ article.Keywords | safe }}</div>
+        {% if article.Desc %}
+        <div class="desc-markdown" style="display: none">
+            <textarea name="doc">{{ article.Desc | safe }}</textarea>
+            <div class="show" id="article_desc_markdown_{{ article.Id }}"></div>
+        </div>
+        <div class="desc"></div>
+        {% endif %}
+    </article>
+    {% endfor %}
+</div>

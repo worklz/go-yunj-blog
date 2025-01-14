@@ -1,0 +1,61 @@
+<aside class="sidebar">
+    <div class="fixed">
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this">统计信息</li>
+                <li>联系博主</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <h2>文章总量: {{ data.articleTotal }}篇</h2>
+                    <h2>文章浏览量: {{ data.articleViewTotal }}次</h2>
+                </div>
+                <div class="layui-tab-item">
+                    <h2>QQ:<a href="#">{{ data.site.author.qq }}</a></h2>
+                    <h2>Email:<a href="#">{{ data.site.author.email }}</a></h2>
+                </div>
+            </div>
+        </div>
+        <div class="keywords-box">
+            <input type="text" name="keywords" placeholder="请输入关键字" class="layui-input">
+            <button type="button" class="layui-btn layui-btn-normal btn-search">搜索</button>
+        </div>
+    </div>
+    {% if data.links %}
+    <div class="widget widget_sentence">
+        <h3>推荐链接</h3>
+        <div class="widget-sentence-link">
+            {% for item in data.links %}
+            <a href="{{ item.Link }}" title="{{ item.Desc }}" target="_blank">{{ item.Desc }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% if data.articleHotItems %}
+    <div class="widget widget_hot">
+        <h3>浏览最多</h3>
+        <ul>
+            {% for item in data.articleHotItems %}
+            <li>
+                <a title="{{ item.Title }}" href="/article/{{ item.Id }}">
+                    <span class="thumbnail">
+                        <img class="lazy thumb" data-original="{{ item.Cover }}" alt="{{ item.Title }}"
+                             style="display: block;">
+                    </span>
+                    <span class="text">{{ item.Title }}</span>
+                    <span class="muted"><i class="yunj-icon yunj-icon-time"></i> {{ item.DisplayCreateTime }}</span>
+                    <span class="muted"><i class="yunj-icon yunj-icon-eye"></i> {{ item.ViewCount }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% for item in data.asideAd %}
+    <div class="widget widget_sentence">
+        <a href="{{ item.Link }}" target="_blank" rel="nofollow" title="{{ item.Desc }}">
+            <img class="lazy" style="width: 100%" data-original="{{ item.Cover }}" alt="{{ item.Desc }}">
+        </a>
+    </div>
+    {% endfor %}
+</aside>

@@ -1,0 +1,83 @@
+{% extends "../public/layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/libs/swiper-7.4.1/swiper/swiper-bundle.min.css">
+<script src="/static/libs/swiper-7.4.1/swiper/swiper-bundle.min.js"></script>
+<style type="text/css">
+    .swiper{
+        border-radius: 4px;
+    }
+    .swiper-slide img{
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% if data.carousel %}
+<div class="swiper">
+    <div class="swiper-wrapper">
+        {% for item in data.carousel %}
+        <div class="swiper-slide">
+            <a href="{% if item.Link %}{{ item.Link }}{% else %}#{% endif %}" target="_blank" title="{{ item.Desc }}">
+                <img src="{{ item.Cover }}" alt="{{ item.Desc }}">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+{% endif %}
+<article class="excerpt-minic excerpt-minic-index">
+    <h2><span class="red">【推荐】</span><a target="_blank" href="https://gitee.com/worklz/yunj-admin-tp6">用云静Admin TP6快速构建自己的应用</a></h2>
+    <p class="note">
+        <a href="https://tp6admin.doc.iyunj.cn" target="_blank">云静Admin TP6：https://tp6admin.doc.iyunj.cn</a></p>
+</article>
+<div class="title">
+    <h3>最新发布</h3>
+    <div class="more">
+        <a href="/category" title="随笔">随笔</a>
+        {% for item in data.topCategoryItems %}
+        <a href="/category/{{ item.Id }}" title="{{ item.Name }}">{{ item.Name }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% include "../public/article_list.html" %}
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    layui.use(["jquery","ArticleList"],function () {
+        let win = window;
+        let doc = document;
+        let $ = layui.jquery;
+        let ArticleList = layui.ArticleList;
+
+        function initSwiper() {
+            new Swiper ('.swiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                }
+            })
+        }
+
+        function initArticleList() {
+            let page = {{ data.articlePageData.page }};
+            let pageCount = {{ data.articlePageData.pageCount }};
+            let pageSize = {{ data.articlePageData.pageSize }};
+            new ArticleList({
+                listEl:".article-container",
+                page:page,
+                pageCount:pageCount,
+                pageSize:pageSize,
+            });
+        }
+
+        $(doc).ready(function () {
+            initSwiper();
+            initArticleList();
+        });
+    });
+</script>
+{% endblock %}

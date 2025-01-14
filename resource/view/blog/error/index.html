@@ -1,0 +1,41 @@
+{% extends "../public/layout.html" %}
+
+{% block head %}
+<style type="text/css">
+    .panel {
+        min-height: 400px;
+        cursor: default;
+    }
+
+    .text-center {
+        margin: 0 auto;
+        padding-bottom: 20px;
+        text-align: center;
+        border-radius: 10px;
+        max-width: 900px;
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    }
+
+    h2 {
+        padding-top: 20px;
+        font-size: 20px;
+    }
+
+    .action-box {
+        padding: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+    <div class="text-center">
+        <h2>
+            <stong>{% if data.msg %}{{ data.msg }}{% else %}很抱歉！您要找的页面不存在{% endif %}</stong>
+        </h2>
+        <div class="action-box"><a href="/" class="btn btn-primary">返回首页</a></div>
+    </div>
+</div>
+{% endblock %}

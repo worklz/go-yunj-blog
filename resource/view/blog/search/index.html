@@ -1,0 +1,35 @@
+{% extends "../public/layout.html" %}
+
+{% block content %}
+<div class="title">
+    <h3>关键词：<span style="color:#f16c20;">{{ data.keywords }}</span></h3>
+    <div class="more"><a class="loading-count" href="javascript:void(0);">相关文章约 {{ data.articlePageData.itemsCount }} 篇</a></div>
+</div>
+{% include "../public/article_list.html" %}
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    layui.use(["jquery","ArticleList"],function () {
+        let win = window;
+        let doc = document;
+        let $ = layui.jquery;
+        let ArticleList = layui.ArticleList;
+
+        $(doc).ready(function () {
+            let page = {{ data.articlePageData.page }};
+            let pageCount = {{ data.articlePageData.pageCount }};
+            let pageSize = {{ data.articlePageData.pageSize }};
+            win.articleList = new ArticleList({
+                listEl:".article-container",
+                page:page,
+                pageCount:pageCount,
+                pageSize:pageSize,
+                keywords:"{{ data.keywords }}",
+                sortRule:"{{ data.sortRule }}"
+            });
+            articleList.renderDesc();
+        });
+    });
+</script>
+{% endblock %}

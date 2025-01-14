@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "yunj-icon"; /* Project id 1954410 */
+  src: url('iconfont.eot?t=1669647053082'); /* IE9 */
+  src: url('iconfont.eot?t=1669647053082#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1669647053082') format('woff2'),
+       url('iconfont.woff?t=1669647053082') format('woff'),
+       url('iconfont.ttf?t=1669647053082') format('truetype'),
+       url('iconfont.svg?t=1669647053082#yunj-icon') format('svg');
+}
+
+.yunj-icon {
+  font-family: "yunj-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.yunj-icon-baidu:before {
+  content: "\e651";
+}
+
+.yunj-icon-sub:before {
+  content: "\e600";
+}
+
+.yunj-icon-time:before {
+  content: "\e8c4";
+}
+
+.yunj-icon-category:before {
+  content: "\e62f";
+}
+
+.yunj-icon-eye:before {
+  content: "\e611";
+}
+
+.yunj-icon-pen:before {
+  content: "\e67b";
+}
+
+.yunj-icon-list:before {
+  content: "\e646";
+}
+
+.yunj-icon-clear:before {
+  content: "\e946";
+}
+
+.yunj-icon-submit:before {
+  content: "\e645";
+}
+
+.yunj-icon-back:before {
+  content: "\e614";
+}
+
+.yunj-icon-refresh:before {
+  content: "\e648";
+}
+
+.yunj-icon-sort:before {
+  content: "\e608";
+}
+
+.yunj-icon-sort-circle:before {
+  content: "\e650";
+}
+

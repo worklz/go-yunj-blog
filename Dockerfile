@@ -1,7 +1,7 @@
 # 拉取一个带有golang环境的镜像来编译go项目（比较小的镜像）
 FROM crpi-cb1t6ui6q7epw7vo.cn-chengdu.personal.cr.aliyuncs.com/worklz/golang:alpine AS builder
 # 作者
-MAINTNER worklz
+MAINTAINER worklz
 
 # 构建可执行文件
 # 关闭CGO

@@ -75,16 +75,16 @@ FLUSH PRIVILEGES;
 
 ```bash
 # 进入项目根目录
-# 构建镜像：yunj-blog-go 为镜像名
-docker build -t yunj-blog-go .
+# 构建镜像：go-yunj-blog 为镜像名
+docker build -t go-yunj-blog .
 
-# 启动容器：yunj-blog-go 为容器名
-# /www/go/src/yunj-blog-go 为项目根目录绝对路径
-docker run --name yunj-blog-go \
--v /www/go/src/yunj-blog-go/config:/app/config \
--v /www/go/src/yunj-blog-go/storage:/app/storage \
+# 启动容器：go-yunj-blog 为容器名
+# /www/go/src/go-yunj-blog 为项目根目录绝对路径
+docker run --name go-yunj-blog \
+-v /www/go/src/go-yunj-blog/config:/app/config \
+-v /www/go/src/go-yunj-blog/storage:/app/storage \
 -p 8082:8082 \
--d yunj-blog-go
+-d go-yunj-blog
 ```
 
 本机浏览器访问：`http://127.0.0.1:8082` 即可验证部署成功

@@ -134,6 +134,16 @@ dciT7Q72rEdLiY93Nw5qAHR0sV5ulwwMWiY0DmMXTDkgEp4ZoAK3fyMqw08yUvHV
         e.stopPropagation();
     });
 
+    $(doc).on("click",".navbar-toggle", function (e) {
+        e.stopPropagation();
+        let navbar = $("#header-navbar");
+        if (navbar.is(':visible')) {
+            navbar.hide();
+        } else {
+            navbar.show();
+        }
+    });
+
     class GUID {
         constructor() {
             this.cacheKey = "guid";
